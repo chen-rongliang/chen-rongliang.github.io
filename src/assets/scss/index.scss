@@ -1,0 +1,62 @@
+@import "./common.scss";
+
+@mixin bg {
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+#app {
+    width: 100%;
+    max-width: 750px;
+    margin: auto;
+    @extend .clearfix;
+    @include bg;
+    background-image: url(../img/pic.jpg);
+    .widget.google {
+        width: 32%;
+        padding-top: 14.6%;
+        margin: 40% auto auto;
+        @include bg;
+        background-image: url(../img/google.gif);
+    }
+    .toolbar {
+        width: 90%;
+        margin: 32px auto auto;
+        text-align: center;
+        font-size: 0;
+        .btn {
+            display: inline-block;
+            width: 56px;
+            height: 56px;
+            line-height: 56px;
+            padding: 0;
+            margin: auto 12px;
+            vertical-align: top;
+            border-width: 0;
+            border-radius: 100%;
+            font-size: 12px;
+            color: #fff;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 40px auto;
+            transition: border-radius 3s;
+            cursor: pointer;
+            &.btn-weather {
+                background-color: #ff6da0;
+                background-image: url(../img/ic-sun.png);
+                box-shadow: 0 0 6px #ff6da0;
+            }
+            &.btn-qrcode {
+                background-color: #23aaf2;
+                background-image: url(../img/ic-qrcode.png);
+                box-shadow: 0 0 6px #23aaf2;
+            }
+            &.btn-apk {
+                background-color: #44c546;
+                background-image: url(../img/ic-apk.png);
+                box-shadow: 0 0 6px #44c546;
+            }
+        }
+    }
+}
