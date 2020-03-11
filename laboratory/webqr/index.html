@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>HTML5 code Reader</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+</head>
+
+<body>
+	<video id="video" width="500" height="500" autoplay></video>
+	<canvas id="canvas" width="500" height="500"></canvas>
+	<br>
+	<button onclick="takePhoto()">开始扫描</button>
+	<script src="//cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+	<script src="deQrcode.js"></script>
+	<script>
+		var ctx, video, canvas;
+		$(function () {
+			getMedia();
+		});
+		function getMedia() {
+			var config = {
+				video: { width: 500, height: 500 },
+				audio: false
+			}
+			video = document.getElementById("video");
+			var promise = navigator.mediaDevices.getUserMedia(config);
+
+			canvas = document.getElementById("canvas");
+			ctx = canvas.getContext("2d");
+			promise.then(function (stream) {
+				if (stream.active) {
+					video.srcObject = stream;
+					video.play();
+				} else {
+					getMedia();
+				}
+
+			});
+
+			qrcode.callback = function (e) {
+				//结果回调
+				console.log(e)
+			}
+		}
+		function takePhoto() {
+			ctx.drawImage(video, 0, 0, 500, 500)
+			qrcode.decode(canvas.toDataURL('image/png'));
+		}
+
+		//将视频流放到画布
+		function captureToCanvas() {
+			if (gUM) {
+				try {
+					gCtx.drawImage(v, 0, 0);
+					try {
+						qrcode.decode();
+					}
+					catch (e) {
+						console.log(e);
+						setTimeout(captureToCanvas, 500);
+					};
+				}
+				catch (e) {
+					console.log(e);
+					setTimeout(captureToCanvas, 500);
+				};
+			}
+		}
+
+	</script>
+</body>
+
+</html>
