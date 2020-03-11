@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>HTML5 code Reader</title>
 	<style>
 
 		html,
@@ -74,7 +74,13 @@
 				vh = el.video.offsetHeight
 
 			let config = {
-				video: { width: vw, height: vh },
+				video: {
+					width: vw,
+					height: vh,
+					facingMode: {
+						exact: "environment"
+					}
+				},
 				audio: false
 			}
 
