@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC</title>
+</head>
+<body>
+    <div id="app">
+        <video id="video" autoplay controls muted="true"></video>
+    </div>
+    <script src="./static/js/adapter.js"></script>
+    <script>
+        ;(function () {
+            var $video = document.querySelector('#video')
+            (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia)({
+                'audio': true,
+                'video': true
+            }, function (stream) {
+                $video.srcObject = stream
+            }, function () {
+                console.log('could not get video')
+            })
+        })()
+    </script>
+</body>
+</html>
