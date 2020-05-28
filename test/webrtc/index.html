@@ -11,17 +11,17 @@
     </div>
     <script src="./static/js/adapter.js"></script>
     <script>
-        ;(function () {
+        window.addEventListener('load', function () {
             var $video = document.querySelector('#video')
             (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia)({
-                'audio': true,
+                'audio': false,
                 'video': true
             }, function (stream) {
                 $video.srcObject = stream
             }, function () {
                 console.log('could not get video')
             })
-        })()
+        })
     </script>
 </body>
 </html>
