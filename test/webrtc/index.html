@@ -11,9 +11,12 @@
     </div>
     <script src="./static/js/adapter.js"></script>
     <script>
-        window.addEventListener('load', function () {
+        ;(function () {
             var $video = document.querySelector('#video')
-            (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia)({
+
+            navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia
+
+            navigator.getUserMedia({
                 'audio': false,
                 'video': true
             }, function (stream) {
@@ -21,7 +24,7 @@
             }, function () {
                 console.log('could not get video')
             })
-        })
+        })()
     </script>
 </body>
 </html>
