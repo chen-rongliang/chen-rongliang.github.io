@@ -1,0 +1,33 @@
+name: Auto build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+                uses: actions/checkout@master
+            - name: use Node.js 10
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 10
+            - name: npm install and test
+                run: |
+                    npm install
+                    npm run build
+                env:
+                    CI: true
+            - name: commit
+                run: |
+                    git config --global user.email chen-rongliang@qq.com
+                    git config --global user.name chen-rongliang
+                    git add .
+                    git commit -m "update" -a
+            - name: push change
+                uses: ad-m/github-push-action@master
+                 with:
+                    github_token: ${{ secrets.GITHUB_TOKEN }}
