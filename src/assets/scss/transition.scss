@@ -1,0 +1,29 @@
+/* Vue transtion style */
+
+.fade-out-enter-active,
+.fade-out-leave-active,
+.fade-in-enter-active,
+.fade-in-leave-active {
+    transition: all .25s ease;
+}
+
+.fade-out-enter,
+.fade-out-leave-to {
+    transform: translate3d(0, -36px, 0);
+    opacity: 0;
+}
+
+.fade-in-enter,
+.fade-in-leave-to {
+    transform: translate3d(0, 36px, 0);
+    opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all .25s ease;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
