@@ -29,6 +29,6 @@ jobs:
                 git add .
                 git commit -m "update" -a
             - name: push change
-              uses: chen-rongliang/github-push-action@master
+              uses: ad-m/github-push-action@master
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
