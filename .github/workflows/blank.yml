@@ -25,9 +25,10 @@ jobs:
               run: |
                 git config --global user.email chen-rongliang@qq.com
                 git config --global user.name chen-rongliang
+                git config --global core.quotepath false
                 git add .
                 git commit -m "update" -a
             - name: push change
-              uses: chen-rongliang/chen-rongliang.github.io.git@master
+              uses: ad-m/github-push-action@master
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
